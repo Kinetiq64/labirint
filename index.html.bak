@@ -1,0 +1,88 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link href="https://fonts.googleapis.com/css?family=Bowlby+One+SC" rel="stylesheet">
+<title>Labirint</title>
+</head>
+<body>
+
+<header>
+	<font id="pisava">BEN 10 LABIRINT</font>
+</header>
+<div id="center">
+	<canvas id="canvas1" width="482" height="482" ></canvas>
+</div>
+<div id="gumbi">
+	<div class="button"><a href="start()">ZACNI</a></div>
+	<div class="button2"><a href="window.location.reload()">OBNOVI</a></div>
+<div>
+
+<script>
+		const pic1 = new Image();
+		pic1.src = 'slike/ben.png';
+
+		const pic2 = new Image();
+		pic2.src = 'slike/vilgax.png';
+
+		var canvas = document.getElementById("canvas1"); 
+		var ctx = canvas.getContext("2d");
+		var points=[234,2,234,10,202,10,202,26,266,26,266,42,250,42,250,58,266,58,266,74,218,74,218,122,266,122,266,138,234,138,234,170,282,170,282,138,298,138,298,170,314,170,314,186,282,186,282,218,314,218,314,202,330,202,330,234,346,234,346,250,378,250,378,218,394,218,394,266,346,266,346,282,378,282,378,298,426,298,426,314,458,314,458,330,474,330,474,346,442,346, 442,362,394,362,394,410,426,410,426,394,442,394,442,426,458,426,458,410,474,410,474,442,426,442,426,426,410,426,410,474,394,474,394,426,378,426,378,410,362,410,362,394,330,394,330,378,250,378,250,394,266,394,266,410,250,410,250,426,266,426,266,442,282,442,282,474,250,474,250,482,250,700,750];
+
+		var ab=[];
+		var Atemp=0;
+		var Btemp=0;
+		var a=234;
+		var b=0;
+		var n=0;
+		var t=0;
+		points.scale(2, 2)
+
+		function start() {
+			setInterval(draw,9);
+			document.getElementById("button").style.visibility="hidden";
+		}
+		
+		function draw(){
+			Atemp=points[n];
+			Btemp=points[n+1];
+			var aRisi=Atemp-a;
+			var bRisi=Btemp-b;
+			ctx.clearRect(0,0,482,482);
+			ctx.drawImage(pic1,a-7,b-9);
+			ctx.drawImage(pic2,ab[t-201]-8,ab[t-202]-9);
+
+			if(a!=Atemp||b!=Btemp){
+				t=t+2;
+
+				if(aRisi>0){	
+					a=a+1;
+				}
+				else if(aRisi==0){
+				}
+				else{
+					a=a-1;
+				}
+				if(bRisi>0){
+					b=b+1;
+				}else if(bRisi==0){
+				}
+				else{
+					b=b-1;
+				}
+			}
+			else{
+				n=n+2;
+			}
+
+			ab[t-1]=a;
+			ab[t]=b;
+			console.log(t);
+
+			if(a==250 && b==670){
+				clearInterval(hitrost);	
+			}
+	 }
+	</script>
+
+</body>
+</html>
